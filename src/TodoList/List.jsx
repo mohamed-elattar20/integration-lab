@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { axiosInstance } from "../Config/config.axios";
 import { debounce } from "lodash";
+import { DebounceInput } from "react-debounce-input";
+
 //
 
 const Todolist = () => {
@@ -37,6 +39,7 @@ const Todolist = () => {
   }, [searchh]);
 
   const handleSearch = (e) => {
+    // console.log(e.target);
     setSearchh(e.target.value);
   };
   const handleDelete = async (id) => {
@@ -66,6 +69,14 @@ const Todolist = () => {
   return (
     <div className="todolist">
       <div className="search" onSubmit={addTask}>
+        {/* another Way ************** */}
+        {/* <DebounceInput
+          minLength={2}
+          placeholder="Enter something here..."
+          debounceTimeout={500}
+          onChange={handleSearch}
+          value={searchh}
+        /> */}
         <input
           onChange={handleSearch}
           value={searchh}
